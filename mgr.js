@@ -89,7 +89,7 @@ define(['managerAPI',
         raceiat: [{
             type: 'time',
             name: 'raceiat',
-            scriptUrl: 'raceiat.js'
+            scriptUrl: 'insect-iat.js'
         }],
 
         lastpage: [{
