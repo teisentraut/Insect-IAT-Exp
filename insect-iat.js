@@ -1,4 +1,4 @@
-define(['/implicit/common/all/js/pip/piscripts/iat/iat5.js'], function(iatExtension){
+define(['pipAPI','https://cdn.jsdelivr.net/gh/baranan/minno-tasks@0.*/IAT/iat10.js'], function(APIConstructor, iatExtension){
 	return iatExtension({
 		category1 : {
 			name : 'Insects', //Will appear in the data.
