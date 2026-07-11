@@ -14,26 +14,11 @@ define(['managerAPI',
     API.setName('mgr');
     API.addSettings('skip',true);
 
-    //Randomly select which of two sets of category labels to use.
-    let raceSet = API.shuffle(['a','b'])[0];
-    let blackLabels = [];
-    let whiteLabels = [];
-
-    if (raceSet == 'a') {
-        blackLabels.push('African Americans');
-        whiteLabels.push('European Americans');
-    } else {
-        blackLabels.push('Black people');
-        whiteLabels.push('White people');
-    }
+   
 
     API.addGlobal({
-        raceiat:{},
-        //YBYB: change when copying back to the correct folder
-        baseURL: './images/',
-        raceSet:raceSet,
-        blackLabels:blackLabels,
-        whiteLabels:whiteLabels,
+    insectiat:{},
+    baseURL: './images/',
         //Select randomly what attribute words to see. 
         //Based on Axt, Feng, & Bar-Anan (2021).
         posWords : API.shuffle([
@@ -72,13 +57,13 @@ define(['managerAPI',
             header: 'Welcome'
         }],
 
-        raceiat_instructions: [{
-            inherit: 'instructions',
-            name: 'raceiat_instructions',
-            templateUrl: 'raceiat_instructions.jst',
-            title: 'IAT Instructions',
-            header: 'Implicit Association Test'
-        }],
+        insectiat_instructions: [{
+    inherit: 'instructions',
+    name: 'insectiat_instructions',
+    templateUrl: 'insectiat_instructions.jst',
+    title: 'IAT Instructions',
+    header: 'Implicit Association Test'
+}],
 
         explicits: [{
             type: 'quest',
@@ -86,11 +71,11 @@ define(['managerAPI',
             scriptUrl: 'explicits.js'
         }],
 
-        raceiat: [{
-            type: 'time',
-            name: 'raceiat',
-            scriptUrl: 'insect-iat.js'
-        }],
+        insectiat: [{
+    type: 'time',
+    name: 'insectiat',
+    scriptUrl: 'insect-iat.js'
+}],
 
         lastpage: [{
             type: 'message',
@@ -116,7 +101,7 @@ define(['managerAPI',
     API.addSequence([
         { type: 'isTouch' }, //Use Minno's internal touch detection mechanism. 
         
-        { type: 'post', path: ['$isTouch', 'raceSet', 'blackLabels', 'whiteLabels'] },
+      { type: 'post', path: ['$isTouch'] },
 
         // apply touch only styles
         {
@@ -164,8 +149,8 @@ define(['managerAPI',
                 {
                     mixer: 'wrapper',
                     data: [
-                        {inherit: 'raceiat_instructions'},
-                        {inherit: 'raceiat'}
+                        {inherit: 'insectiat_instructions'},
+{inherit: 'insectiat'}
                     ]
                 }
             ]
